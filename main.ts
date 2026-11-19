@@ -1,23 +1,25 @@
-// Entry point: copies the static app and screenshots into the output
-// directory, then writes a deterministic dossier.json for the grader.
-import { existsSync, mkdirSync, cpSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
 
-const outDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
+const here = dirname(fileURLToPath(import.meta.url));
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 mkdirSync(outDir, { recursive: true });
 
-const appSrc = join(process.cwd(), 'app');
-const shotsSrc = join(process.cwd(), 'screenshots');
-const appDst = join(outDir, 'app');
-const shotsDst = join(outDir, 'screenshots');
+const appSrc = join(here, 'app');
+const shotsSrc = join(here, 'screenshots');
 
 if (existsSync(appSrc)) {
-  cpSync(appSrc, appDst, { recursive: true, force: true });
+  cpSync(appSrc, join(outDir, 'app'), { recursive: true });
+} else {
+  throw new Error('Missing required folder: app/');
 }
 if (existsSync(shotsSrc)) {
-  cpSync(shotsSrc, shotsDst, { recursive: true, force: true });
+  cpSync(shotsSrc, join(outDir, 'screenshots'), { recursive: true });
+} else {
+  throw new Error('Missing required folder: screenshots/');
 }
 
 const dossier = buildDossier(outDir, {
@@ -25,6 +27,7 @@ const dossier = buildDossier(outDir, {
   screenshots: { max: 4, max_bytes: 262144 },
   app_max_files: 993,
   app_max_bytes: 50331648,
+  app_path_max_bytes: 1000,
 });
 
-writeFileSync(join(outDir, 'dossier.json'), dossier);
+writeFileSync(join(outDir, 'dossier.json'), JSON.stringify(dossier, null, 2) + '\n', 'utf8');
