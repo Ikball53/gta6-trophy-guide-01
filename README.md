@@ -1,31 +1,20 @@
-[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![rank](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![reward](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+# gta6-trophy-guide-01
 
-# Leonida Trophy Guide — GTA VI Platinum Roadmap
+[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-An offline web app that tracks all 55 Grand Theft Auto VI PS5 trophies: a filterable checklist with per-trophy guides, a 5-stage platinum roadmap, a missables view, progress counters for long grinds, a spoiler shield for story trophies, and local save export/import.
-
-Trophy names, descriptions and grades match the official PS5 list. Guides are original writing for this app and honestly note where the official text gives no location or steps. This is an unofficial fan guide with no Rockstar logos or artwork.
+Leonida Trophy Tracker is an offline guide and tracker for all 55 Grand Theft Auto VI PlayStation 5 trophies. It shows every official name, description and grade with an original guide per trophy that names its sources, saves your checklist in the browser with export and import, filters by kind and grade with text search, hides story trophies behind a spoiler shield until earned, and lays out a seven-stage roadmap to the platinum with every missable flagged and explained. The app is static files with no build step and makes no network requests at run time.
 
 ## Run it
 
-Serve the `app/` folder with any static file server, for example:
-
-```bash
+```sh
 python3 -m http.server 8000 --directory app
-```
-
-Then open `http://localhost:8000/` in a browser. The app loads `data/trophies.json` locally and saves progress in your browser (localStorage). No network calls beyond that local data file.
-
-To build the make.fun dossier locally:
-
-```bash
+# then open http://localhost:8000/ in desktop Chrome
+# grader entrypoint (copies app/ and screenshots/ and writes dossier.json):
 MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-This copies `app/` and `screenshots/` into `out/` and writes `out/dossier.json`.
+---
 
-## License
-
-MIT — see `LICENSE` (SPDX-License-Identifier: MIT).
+<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>
