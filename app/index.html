@@ -3,107 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leonida Trophy Tracker — GTA VI Guide</title>
-<meta name="description" content="Offline guide and tracker for all 55 Grand Theft Auto VI PlayStation trophies: checklist, roadmap, missables, spoiler mode, export and import.">
+<title>Leonida Platinum Ledger — GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-<div class="brand">
-<p class="eyebrow">Grand Theft Auto VI · PlayStation trophies</p>
-<h1>Leonida Trophy Tracker</h1>
-<p class="tagline">All 55 trophies, tracked offline. Check them off, follow the seven-stage roadmap, and never lose a missable.</p>
-</div>
-<div class="scoreboard" aria-label="Progress summary">
-<p class="score-count"><span id="earnedCount">0</span><span class="score-of"> / 55 earned</span></p>
-<p class="score-pct"><span id="earnedPct">0</span>% to platinum</p>
-<div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBarWrap">
-<div class="progress-fill" id="progressFill"></div>
-</div>
-<p class="score-note" id="saveNote">Progress saves in this browser.</p>
-</div>
+<header id="topbar">
+  <div class="brand">
+    <div class="mark" aria-hidden="true">LPL</div>
+    <div>
+      <h1>Leonida Platinum Ledger</h1>
+      <p class="sub">Grand Theft Auto VI · PlayStation 5 trophy guide &amp; tracker · works offline</p>
+    </div>
+  </div>
+  <div class="headstats">
+    <div id="counts" class="counts">Loading trophies…</div>
+    <div class="bar" role="progressbar" aria-label="Trophy progress"><div id="barfill"></div></div>
+    <div id="gradecounts" class="gradecounts"></div>
+  </div>
 </header>
 
-<nav class="viewnav" aria-label="Views">
-<a href="#/checklist" data-view-link="checklist" class="view-link">Checklist</a>
-<a href="#/roadmap" data-view-link="roadmap" class="view-link">Roadmap</a>
-<a href="#/missables" data-view-link="missables" class="view-link">Missables <span class="nav-count" id="missableNavCount"></span></a>
+<nav id="toolbar" aria-label="Guide controls">
+  <div class="tabs" role="tablist">
+    <button type="button" class="tab" data-view="checklist">Checklist</button>
+    <button type="button" class="tab" data-view="roadmap">Platinum roadmap</button>
+    <button type="button" class="tab" data-view="missables">Missables</button>
+  </div>
+  <div class="chips" id="filters" aria-label="Filter by kind">
+    <button type="button" class="chip" data-filter="all">All</button>
+    <button type="button" class="chip" data-filter="story">Story</button>
+    <button type="button" class="chip" data-filter="missable">Missable</button>
+    <button type="button" class="chip" data-filter="collectibles">Collectibles</button>
+    <button type="button" class="chip" data-filter="activities">Activities</button>
+  </div>
+  <input id="search" type="search" placeholder="Search trophies…" aria-label="Search trophies">
+  <label class="toggle"><input id="spoiler" type="checkbox"> Spoiler mode</label>
+  <button type="button" id="exportBtn">Export</button>
+  <label class="importlabel">Import<input id="importFile" type="file" accept="application/json" hidden></label>
 </nav>
 
-<section class="controls" aria-label="Tracker controls">
-<div class="control-row">
-<label class="field grow">
-<span>Search trophies</span>
-<input type="search" id="searchInput" placeholder="Type a name or word, e.g. heist, fishing, vault" autocomplete="off">
-</label>
-<label class="field">
-<span>Grade</span>
-<select id="gradeFilter">
-<option value="all">All grades</option>
-<option value="platinum">Platinum</option>
-<option value="gold">Gold</option>
-<option value="silver">Silver</option>
-<option value="bronze">Bronze</option>
-</select>
-</label>
-<label class="field toggle-field">
-<span>Spoiler shield</span>
-<span class="toggle-wrap"><input type="checkbox" id="spoilerToggle"> <span class="toggle-text">Hide story trophies until earned</span></span>
-</label>
-</div>
-<div class="control-row">
-<div class="kind-filters" role="group" aria-label="Filter by kind">
-<button type="button" class="kind-btn is-active" data-kind="all">All kinds</button>
-<button type="button" class="kind-btn" data-kind="story">Story</button>
-<button type="button" class="kind-btn" data-kind="missable">Missable</button>
-<button type="button" class="kind-btn" data-kind="collectibles">Collectibles</button>
-<button type="button" class="kind-btn" data-kind="activities">Activities</button>
-</div>
-<div class="io-actions">
-<button type="button" id="exportBtn" class="btn">Export progress</button>
-<label class="btn file-btn" for="importFile">Import progress</label>
-<input type="file" id="importFile" accept="application/json,.json" class="visually-hidden">
-<button type="button" id="resetBtn" class="btn btn-quiet">Reset</button>
-</div>
-</div>
-<p class="controls-note" id="filterNote">Showing all 55 trophies.</p>
-</section>
+<p id="sourcelegend" class="legend">Sources: PSNProfiles trophy list · Exophase trophy list · PowerPyx GTA 6 guide · GTA Wiki · Rockstar Games official site — official names, descriptions and grades as PlayStation publishes them.</p>
 
 <main>
-<section id="view-checklist" class="view">
-<div class="checklist-layout">
-<div class="list-pane">
-<h2 class="pane-title">Checklist <span class="pane-sub">tick each trophy as you earn it</span></h2>
-<ul id="trophyList" class="trophy-list"></ul>
-<p id="emptyList" class="empty-note" hidden>No trophies match those filters. Clear the search or pick another kind.</p>
-</div>
-<aside class="detail-pane" id="detailPane" aria-label="Trophy guide">
-<h2 class="pane-title">Guide</h2>
-<div id="detailBody">
-<p class="detail-placeholder">Pick any trophy on the left to read its guide here — what to do, how to approach it, and when it can be missed, with sources named for every trophy.</p>
-</div>
-</aside>
-</div>
-</section>
-
-<section id="view-roadmap" class="view" hidden>
-<h2 class="pane-title">Roadmap to platinum <span class="pane-sub">seven stages, in earning order</span></h2>
-<p class="view-intro">Work top to bottom. Clear each stage's flagged missables before moving on, and keep a separate save before the finale. Stages are built from the official descriptions: story chapters first, stranger strands next, then activities, collectibles and the 100% sweep.</p>
-<div id="roadmapBody"></div>
-</section>
-
-<section id="view-missables" class="view" hidden>
-<h2 class="pane-title">Missables <span class="pane-sub">do these before the story moves past them</span></h2>
-<p class="view-intro">Every trophy flagged here depends on a single named mission, a stranger strand, a choice, or a story-bound place, so it is flagged as a precaution until replay access is confirmed in the game. Each flag says why. When in doubt: do it when it is offered, and keep a save from before it.</p>
-<div id="missablesBody"></div>
-</section>
+  <section id="view-checklist" class="view">
+    <div id="list" class="list" role="list"></div>
+    <aside id="detail" class="detail" aria-live="polite"></aside>
+  </section>
+  <section id="view-roadmap" class="view" hidden></section>
+  <section id="view-missables" class="view" hidden></section>
 </main>
 
-<footer class="footer">
-<p><strong>Sources.</strong> Official trophy names, descriptions and grades are shown exactly as listed by <a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/" target="_blank" rel="noopener">Exophase</a> and <a href="https://psnprofiles.com/trophies/43531-grand-theft-auto-vi" target="_blank" rel="noopener">PSNProfiles</a>. Every guide here is original advice derived from those official descriptions and is not yet checked in the game; no specific street address or step-by-step location is claimed without a cited source.</p>
-<p>Works fully offline after first load. Your ticks stay in this browser's local storage — export them to keep a copy. Fan-made tracker; not affiliated with Rockstar Games or PlayStation.</p>
+<footer>
+  <p>Progress is saved in this browser (localStorage) and can be exported to a file and imported back. GTA VI is pre-release: guides are built from the official trophy descriptions and say where a detail is inferred rather than confirmed. No game artwork is used; this guide's look is its own.</p>
 </footer>
-
 <script src="app.js"></script>
 </body>
 </html>
