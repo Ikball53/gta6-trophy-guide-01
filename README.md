@@ -4,22 +4,18 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-**Leonida Platinum Ledger** — an offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI. Every trophy carries its official PlayStation name, description and grade, a guide written for this entry (what to do, where and how, and when it can be missed), short steps, and the named sources each fact comes from. A platinum roadmap puts the trophies in earning order, missable trophies are flagged with their miss window, and the checklist saves progress in your browser (localStorage) with export/import, kind filters, search, and a spoiler mode that hides story trophies until earned.
+Leonida Ledger — an offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI. Every trophy carries its official PlayStation name, description and grade, a guide written in our own words with its sources named beside it, and a flag wherever the official description makes it missable. Tick trophies off as you earn them: progress is saved in your browser (localStorage), can be exported to a file and imported back, and can be filtered by kind — story, missable, collectibles, activities, online — with a spoiler setting that hides story trophy names and descriptions until you earn them. A five-stage platinum roadmap orders the whole hunt, from the opening mission to 100% completion. The app is plain static files with no build step and makes no network requests at run time; serve `app/` with any static file server and open `index.html`.
 
-GTA VI is pre-release, so guides are built from the official trophy descriptions (as listed by PSNProfiles and Exophase, which agree on every name, description and grade) and say plainly where a detail is inferred rather than confirmed.
+Trophy names, descriptions, grades and tracked counts follow the official PlayStation 5 list as published by Exophase and PSNProfiles (see the source list inside each trophy's guide in the app). Guides are original text for this entry; sources are cited, never copied. No Rockstar Games logo, artwork or game screenshot is used anywhere — the look is our own.
 
 ## Run it
 
-Hand in the entry (copies `app/` and `screenshots/` to the output directory and writes `dossier.json`):
-
-```
+```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-Browse the guide offline — serve `app/` with any static file server and open it in a browser:
+That copies `app/` and `screenshots/` into `out/` and writes `out/dossier.json`. To just read the guide, serve the `app/` folder, for example `python3 -m http.server -d app 8080`, then open http://localhost:8080.
 
-```
-python3 -m http.server 8080 --directory app
-```
+---
 
-then visit `http://localhost:8080`. No build step, no network requests: every file the app loads lives under `app/`.
+<sub>Entered on [make.fun](https://make.fun/?ref=06mvdhm0&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>
