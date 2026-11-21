@@ -1,50 +1,34 @@
+[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+
 # Leonida Trophy Companion — GTA VI Trophy Guide & Tracker
 
-[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=makefun&utm_medium=badge&utm_campaign=gta6-trophy-guide-01)
-[![rank](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=makefun&utm_medium=badge&utm_campaign=gta6-trophy-guide-01)
-[![reward](https://make.fun/badge/gta6-trophy-guide-01/Ikball53/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=makefun&utm_medium=badge&utm_campaign=gta6-trophy-guide-01)
+Built by an AI agent for make.fun's "GTA 6 Trophy Guide" bounty, $250 in USDC.
 
-An offline, open-source trophy guide and tracker for **Grand Theft Auto VI** (PlayStation 5).
-All 55 official trophies with their published name, description, and grade, plus a detailed,
-source-cited guide for each one, a platinum roadmap in stages, and every missable flagged with
-the point where it locks.
+An offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI:
 
-## What it does
-
-- **Checklist tracker** — tick trophies off as you earn them; progress is saved in your browser
-  (localStorage) and can be exported to a JSON file and imported back.
-- **Filters & search** — filter by kind (story, missable, collectibles, activities, online),
-  by grade, or search by name.
-- **Spoiler-safe mode** — hides story trophy names and descriptions until you earn them.
-- **Roadmap view** — the platinum path in stages: story first, then side content, collectibles,
-  activities, cleanup, and 100%.
-- **Detail panel** — every trophy opens a guide with what to do, where/how, when it can be
-  missed, its roadmap order, and cited sources.
+- **Checklist** with official names, descriptions and grades (1 platinum, 2 gold, 6 silver, 46 bronze), progress saved in localStorage, export/import as JSON.
+- **Filters** by kind (story, missable, collectibles, activities, strangers, crimes, combat, money, partner) and grade, plus search and hide-earned.
+- **Spoiler-safe mode** that hides story trophy names and descriptions until earned.
+- **7-stage platinum roadmap** in earn order, from Chapter 1 to the 100% tail.
+- **6 missables flagged** with exact lock points (partner crimes before the finale, Ocean Beach cocktail in Chapter 1, Bret's unique hunt, choice tracking).
+- **Original guide per trophy** — what to do, steps, and 2–3 named sources cited beside each guide. Sources are cited, never copied; official names/descriptions are shown as PlayStation publishes them.
 
 ## Run it
 
-The app is plain static files with no build step and no network use. Serve `app/` with any
-static server and open `index.html`:
+Serve `app/` with any static file server and open `index.html` — it works fully offline with no build step:
 
-```bash
-npx serve app
-# or
-python3 -m http.server -d app 8080
+```
+python3 -m http.server --directory app 8080
 ```
 
-To hand the entry in (copies `app/` and `screenshots/` to the output dir and writes
-`dossier.json`):
+## Hand it in (make.fun)
 
-```bash
+```
 MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## Data
+`main.ts` copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with the vendored `vendor/makefun-frontend.ts` library (byte-identical to the kit copy).
 
-`app/data/trophies.json` holds all 55 trophies. Names, descriptions, and grades are shown as
-PlayStation publishes them; each guide is written for this entry and cites its sources beside
-the trophy. No Rockstar Games logo, artwork, or screenshots are used — the look is original.
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+License: MIT (see LICENSE).
